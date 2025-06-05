@@ -7,63 +7,63 @@ CREATE TABLE "User" (
 );
 
 CREATE TABLE "User_Project" (
-    id SERIAL PRIMARY key,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     user_id UUID NOT NULL,
-    project_id INTEGER NOT NULL,
-    role_id INTEGER,
-    team_id INTEGER
+    project_id UUID NOT NULL,
+    role_id UUID,
+    team_id UUID
 );
 
 CREATE TABLE "Project" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     name TEXT NOT NULL   
 );
 
 CREATE TABLE "Team" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     name TEXT NOT NULL,
-    project_id INTEGER NOT NULL
+    project_id UUID NOT NULL
 );
 
 CREATE TABLE "Task" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     name TEXT NOT NULL,
     description TEXT,
     startDate TIMESTAMPTZ DEFAULT NOW(),
     deadlineDate TIMESTAMPTZ,
-    team_id INTEGER NOT NULL
+    team_id UUID NOT NULL
 );
 
 CREATE TABLE "Artifact" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     status TEXT NOT NULL,
     comment TEXT,
     datetime TIMESTAMPTZ DEFAULT NOW(),
-    task_id INTEGER NOT NULL
+    task_id UUID NOT NULL
 );
 
 CREATE TABLE "Role" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     name TEXT NOT NULL,
     description TEXT,
-    project_id INTEGER NOT NULL
+    project_id UUID NOT NULL
 );
 
 CREATE TABLE "Role_Action" (
-    id SERIAL PRIMARY KEY,
-    role_id INTEGER NOT NULL,
-    action_id INTEGER NOT NULL
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
+    role_id UUID NOT NULL,
+    action_id UUID NOT NULL
 );
 
 CREATE TABLE "Action" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     action TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE "Event" (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     user_id UUID NOT NULL,
-    role_id INTEGER NOT NULL,
+    role_id UUID NOT NULL,
     action TEXT NOT NULL,
     datetime TIMESTAMPTZ DEFAULT NOW()
 );
