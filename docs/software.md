@@ -159,8 +159,3 @@ ALTER TABLE "Event" ADD
     ON UPDATE CASCADE;
 
 ```
-
-
-
-## RESTfull сервіс для управління даними
-

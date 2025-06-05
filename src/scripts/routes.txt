@@ -4,7 +4,7 @@ Users
         { nickname, email, password, photo? }
     GET /api/user
     GET /api/user/{id}
-    GET /api/{id}/project
+    GET /api/user/{id}/project
     PUT /api/user/{id}
         { nickname, email, password, photo? }
     DELETE /api/user/{id}

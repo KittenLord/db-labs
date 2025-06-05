@@ -1,4 +1,4 @@
 curl -X POST \
      -H "Content-Type: application/json" \
-     -d '{ "userId": "80d4d9d2-88f6-4f99-9a1e-e9eb07277e50", "projectName": "great project" }' \
+     -d '{ "userId": "4cb3269c-210f-4d28-8f4a-096e7b751ed8", "projectName": "SUPER ABOBA PROJECT" }' \
      localhost:7777/api/project
