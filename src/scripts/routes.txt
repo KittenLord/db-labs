@@ -1,0 +1,16 @@
+Users
+
+    POST /api/user
+    GET /api/user
+    GET /api/user/{id}
+    GET /api/{id}/project
+    PUT /api/user/{id}
+    DELETE /api/user/{id}
+
+Projects
+
+    POST /api/project
+    GET /api/project
+    GET /api/project/{id}
+    PUT /api/project/{id}
+    DELETE /api/project/{id}

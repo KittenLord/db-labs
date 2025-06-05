@@ -2,10 +2,10 @@ import { Pool } from "pg"
 
 export const pool = new Pool({
     "host": "localhost",
-    "port": 7777,
+    "port": 5432,
     "user": "postgres",
-    "password": "password",
-    "database": "s2lab6"
+    "password": "postgres",
+    "database": "s4lab6"
 })
 
 function shutdown() {
