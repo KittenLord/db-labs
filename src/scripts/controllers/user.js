@@ -44,8 +44,8 @@ export const controller = {
     update: async (req, reply) => {
         const { id } = req.params;
 
-        const { newNickname, newEmail, newPassword, newPhoto } = req.body || {};
-        if(nickname === undefined || email === undefined || password === undefined) {
+        const { nickname: newNickname, email: newEmail, password: newPassword, photo: newPhoto } = req.body || {};
+        if(newNickname === undefined || newEmail === undefined || newPassword === undefined) {
             return reply.code(400).send({ error: "Invalid data format" });
         }
 

@@ -37,12 +37,12 @@ export const controller = {
     update: async (req, reply) => {
         const { id } = req.params;
 
-        const { newName } = req.body || {};
+        const { projectName: newName } = req.body || {};
         if(newName === undefined) {
             return reply.code(400).send({ error: "Invalid data format" });
         }
 
-        const projectUpdate = db.query(
+        const projectUpdate = await db.query(
             `update "Project" set name = $1 where id = $2 returning *`,
             [newName, id]
         );
@@ -52,7 +52,7 @@ export const controller = {
     delete: async (req, reply) => {
         const { id } = req.params;
 
-        const projectDelete = db.query(
+        const projectDelete = await db.query(
             `delete from "Project" where id = $1 returning *`,
             [id]
         );
