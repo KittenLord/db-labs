@@ -1,0 +1,15 @@
+{
+  "name": "db-lab6",
+  "version": "1.0.0",
+  "description": "kpi db lab6",
+  "license": "ISC",
+  "author": "Vanya Braslavets",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^8.16.0"
+  }
+}
