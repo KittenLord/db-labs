@@ -19,6 +19,6 @@ process.on("SIGINT", shutdown)
 process.on("SIGTERM", shutdown)
 
 process.on("uncaughtException", e => {
-    console.log(e);
+    console.error(e);
     shutdown();
 });

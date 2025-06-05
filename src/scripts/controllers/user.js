@@ -1,6 +1,18 @@
+import { pool as db } from "../database.js"
+
 export const controller = {
     create: async (req, reply) => {
-        return "USER create";
+        const { nickname, email, password, photo } = req.body || {};
+        if(nickname === undefined || email === undefined || password === undefined) {
+            return reply.code(400).send({ error: "Invalid data format" });
+        }
+
+        const newUser = await db.query(
+            `insert into "User" (nickname, email, password, photo) values ($1, $2, $3, $4) returning *`,
+            [nickname, email, password, photo]
+        );
+
+        return newUser.rows[0];
     },
     getAll: async (req, reply) => {
         return "USER getAll";
