@@ -1,16 +1,20 @@
 Users
 
     POST /api/user
+        { nickname, email, password, photo? }
     GET /api/user
     GET /api/user/{id}
     GET /api/{id}/project
     PUT /api/user/{id}
+        { nickname, email, password, photo? }
     DELETE /api/user/{id}
 
 Projects
 
     POST /api/project
+        { userId, projectName }
     GET /api/project
     GET /api/project/{id}
     PUT /api/project/{id}
+        { userId, projectName }
     DELETE /api/project/{id}

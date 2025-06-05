@@ -15,22 +15,55 @@ export const controller = {
         return newUser.rows[0];
     },
     getAll: async (req, reply) => {
-        return "USER getAll";
+        const users = await db.query(
+            `select * from "User"`
+        );
+
+        return users.rows;
     },
     get: async (req, reply) => {
         const { id } = req.params;
-        return "USER get " + id;
+    
+        const user = await db.query(
+            `select * from "User" where id = $1`,
+            [id]
+        );
+
+        return user.rows[0];
     },
     getProjects: async (req, reply) => {
         const { id } = req.params;
-        return "USER getProjects " + id;
+
+        const projectIds = await db.query(
+            `select * from "User_Project" where user_id = $1`,
+            [id]
+        );
+
+        return projectIds.rows;
     },
     update: async (req, reply) => {
         const { id } = req.params;
-        return "USER update " + id;
+
+        const { newNickname, newEmail, newPassword, newPhoto } = req.body || {};
+        if(nickname === undefined || email === undefined || password === undefined) {
+            return reply.code(400).send({ error: "Invalid data format" });
+        }
+
+        const userUpdate = await db.query(
+            `update "User" set nickname = $1, email = $2, password = $3, photo = $4 where id = $5 returning *`,
+            [newNickname, newEmail, newPassword, newPhoto, id]
+        );
+
+        return userUpdate.rows[0];
     },
     delete: async (req, reply) => {
         const { id } = req.params;
-        return "USER delete " + id;
+
+        const userDelete = await db.query(
+            `delete from "User" where id = $1 returning *`,
+            [id]
+        );
+
+        return userDelete.rows[0];
     }
 }
